@@ -1,7 +1,5 @@
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.page.Page;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,14 +27,19 @@ public class DiskPage extends BasePage {
 	private WebElement clickAc;
 	@FindBy(xpath="//a[@aria-label='Выйти из аккаунта']")
 	private WebElement exit;
+	@FindBy(xpath="//div[@aria-label='Testfile']")
+	private WebElement heading;
+	@FindBy(xpath = "//button[@aria-label='Назад']")
+	private WebElement back;
 
 
-    public DiskPage() {
 
-        PageFactory.initElements(driver, this);
+    public DiskPage(WebDriver driver) {
+
+        PageFactory.initElements(BasePage.driver, this);
     }
-
-    public void goDisk(){
+    // метод для перехода в диск и манипуляций в нем
+    public DiskPage goDisk() {
         clickMenuProfile.click();
         disk.click();
 
@@ -50,10 +53,20 @@ public class DiskPage extends BasePage {
         act.doubleClick(folder).build().perform();
         act.contextClick(fileDelete).build().perform();
         delete.click();
-        clickAc.click();
-        exit.click();
+        return new DiskPage(driver);
 
-        driver.switchTo().alert().accept();
+    }
+    // метод чтобы разлогиниться
+        public void quit() {
+
+            clickAc.click();
+            exit.click();
+           // driver.switchTo().alert().accept();
+         }
+
+    public String getHeading() {
+
+        return heading.getText(); // метод вернет текст заголовка(для реализации проверки)
     }
 
 }

@@ -19,8 +19,10 @@ abstract public class BeforeAfter {
 
     @After
     public void tearDown(){
-       driver.close();
-        driver.quit();
+        DiskPage diskPage = new DiskPage(driver);
+            diskPage.quit();
+            driver.close();
+            driver.quit();
     }
 
 }

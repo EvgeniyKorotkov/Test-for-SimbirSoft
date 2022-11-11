@@ -1,4 +1,5 @@
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,13 +13,17 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath="//input[@placeholder='Введите пароль']")
 	private WebElement passwordField;
 
+	public LoginPage(WebDriver driver) {
 
-	public LoginPage() {
-		PageFactory.initElements(driver, this);
+
+		PageFactory.initElements(BasePage.driver, this); // иницилизация элементов страницы
 	}
-	public void goLogin(String user, String password) {
+	// метод для ввода логина и пароля
+	public DiskPage goLogin(String user, String password) {
 		mailButton.click();
 		userField.sendKeys(user, Keys.ENTER);
 		passwordField.sendKeys(password, Keys.ENTER);
+		return new DiskPage(driver);
+
 	}
 }

@@ -6,12 +6,15 @@ public class MainPage extends BasePage {
 	@FindBy(xpath="//a[text()='Войти']")
 	private WebElement logIn;
 
+
     public MainPage() {
         driver.get("https://ya.ru");
         PageFactory.initElements(driver, this);
     }
-    public void goLogIn(){
+    // метод для нажатия на кнопку "Войти" и перехода на страницу ввода логина
+    public LoginPage goLogIn(){
         logIn.click();
+        return new LoginPage(driver);
 }
 
 }
