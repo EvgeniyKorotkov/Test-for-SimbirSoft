@@ -11,6 +11,5 @@ public class MainTest extends BeforeAfter {
     DiskPage diskPage = new DiskPage();
     diskPage.goDisk();
 
-
   }
 }

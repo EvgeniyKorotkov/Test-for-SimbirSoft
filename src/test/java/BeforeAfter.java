@@ -7,8 +7,6 @@ import java.time.Duration;
 
 abstract public class BeforeAfter {
     protected WebDriver driver;
-
-
     @Before
     public void setUp(){
         WebDriverManager.chromedriver().setup();
