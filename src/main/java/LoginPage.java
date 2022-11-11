@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
 		PageFactory.initElements(BasePage.driver, this); // иницилизация элементов страницы
 	}
 	// метод для ввода логина и пароля
-	public DiskPage goLogin(String user, String password) {
+	public DiskPage getLogin(String user, String password) {
 		mailButton.click();
 		userField.sendKeys(user, Keys.ENTER);
 		passwordField.sendKeys(password, Keys.ENTER);

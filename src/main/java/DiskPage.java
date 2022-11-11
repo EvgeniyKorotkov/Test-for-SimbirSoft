@@ -29,12 +29,10 @@ public class DiskPage extends BasePage {
 	private WebElement exit;
 	@FindBy(xpath="//div[@aria-label='Testfile']")
 	private WebElement heading;
-	@FindBy(xpath = "//button[@aria-label='Назад']")
-	private WebElement back;
 
 
 
-    public DiskPage(WebDriver driver) {
+    public DiskPage(WebDriver driver) { // конструктор и иницилизатор элементов страницы
 
         PageFactory.initElements(BasePage.driver, this);
     }
